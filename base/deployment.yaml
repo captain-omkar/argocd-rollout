@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: rollout-ref-deployment
 spec:
+  replicas: 0 
   selector:
     matchLabels:
       app: nginx
@@ -22,5 +23,5 @@ spec:
             memory: "128Mi"
 
         ports:
-        - containerPort: 8080
+         - containerPort: 8080
 
