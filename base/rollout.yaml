@@ -7,13 +7,13 @@ spec:
   revisionHistoryLimit: 2
   selector:
     matchLabels:
-      app: rollout-bluegreen
+      app: nginx
   workloadRef: 
     apiVersion: apps/v1
     kind: Deployment
     name: rollout-ref-deployment
   strategy:
     blueGreen: 
-      activeService: rollout-bluegreen-active 
-      previewService: rollout-bluegreen-preview
+      activeService: bluegreen-active 
+      previewService: bluegreen-preview
       autoPromotionEnabled: false

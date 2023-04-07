@@ -10,10 +10,10 @@ spec:
   template:
     metadata:
       labels:
-        app: rollout-bluegreen
+        app: nginx
     spec:
       containers:
-      - name: rollouts-demo
+      - name: demo
         image: nginx:1.18
         imagePullPolicy: Always
         resources:
