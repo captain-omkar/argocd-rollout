@@ -1,13 +1,12 @@
-apiVersion: argoproj.io/v1alpha1     
-kind: Rollout  
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: rollout-bluegreen
+  name: rollout-ref-deployment
 spec:
-  replicas: 2
-  revisionHistoryLimit: 2
   selector:
     matchLabels:
-      app: rollout-bluegreen
+      app: nginx
+  
   template:
     metadata:
       labels:
@@ -15,19 +14,13 @@ spec:
     spec:
       containers:
       - name: rollouts-demo
-        # image: argoproj/rollouts-demo:blue
-        # image: argoproj/rollouts-demo:green
         image: nginx:1.18
         imagePullPolicy: Always
         resources:
           requests:
             cpu: "100m"
             memory: "128Mi"
-          
+
         ports:
         - containerPort: 8080
-  strategy:
-    blueGreen: 
-      activeService: rollout-bluegreen-active 
-      previewService: rollout-bluegreen-preview
-      autoPromotionEnabled: false
+
